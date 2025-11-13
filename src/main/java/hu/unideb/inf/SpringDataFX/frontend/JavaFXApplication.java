@@ -1,5 +1,6 @@
 package hu.unideb.inf.SpringDataFX.frontend;
 
+import hu.unideb.inf.SpringDataFX.SpringBackendManager;
 import hu.unideb.inf.SpringDataFX.SpringDataFxApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,10 @@ public class JavaFXApplication extends Application {
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.show();
+        //////////////////////////////////////////
+        ((MainPageController)loader.getController())
+                .setBackendManager(new SpringBackendManager());
+        //////////////////////////////////////////
     }
 
     @Override

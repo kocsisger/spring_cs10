@@ -5,6 +5,14 @@ import javafx.event.ActionEvent;
 public class MainPageController {
     BackendManager backendManager;
 
+    public BackendManager getBackendManager() {
+        return backendManager;
+    }
+
+    public void setBackendManager(BackendManager backendManager) {
+        this.backendManager = backendManager;
+    }
+
     public void handleStartButton(ActionEvent actionEvent) {
         backendManager.start();
     }

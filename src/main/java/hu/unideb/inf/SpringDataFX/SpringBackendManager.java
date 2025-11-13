@@ -19,6 +19,7 @@ public class SpringBackendManager implements BackendManager {
 
     @Override
     public void print() {
+        if ((ctx==null)||(ctx.isClosed())) return;
         ((SpringDataFxApplication)ctx
                 .getBean(SpringDataFxApplication.class)).print();
     }
