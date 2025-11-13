@@ -1,12 +1,17 @@
 package hu.unideb.inf.SpringDataFX.frontend;
 
+import hu.unideb.inf.SpringDataFX.SpringDataFxApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 public class JavaFXApplication extends Application {
+    private ConfigurableApplicationContext ctx;
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
@@ -14,5 +19,12 @@ public class JavaFXApplication extends Application {
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.show();
+        ctx = SpringApplication.run(SpringDataFxApplication.class);
+    }
+
+    @Override
+    public void stop() throws Exception {
+        ctx.close();
+        super.stop();
     }
 }
